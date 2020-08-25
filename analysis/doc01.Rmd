@@ -1,0 +1,32 @@
+---
+title: "Doc01"
+author: "asunmayoral"
+date: "2020-08-25"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+# Descriptivos gráficos
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+x=rnorm(1000)
+y=rbinom(1000,3,prob=0.1)
+datos=tibble(x,grupo=factor(y))
+```
+
+## Diagrama de barras
+```{r}
+ggplot(datos,aes(grupo))+
+  geom_bar(aes(fill=grupo))+
+  theme(legend.position = "none")
+```
+
+## Diagrama de cajas
+```{r}
+ggplot(datos,aes(grupo,x))+
+  geom_boxplot(aes(fill=grupo))+
+  #coord_flip()+
+  theme(legend.position = "none")
+```
